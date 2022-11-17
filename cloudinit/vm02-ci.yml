@@ -1,0 +1,24 @@
+#cloud-config
+package_update: true
+package_upgrade: true
+
+users:
+  - name: user
+    groups: sudo
+    shell: /bin/bash
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    ssh_authorized_keys:
+      - ssh-rsa klucz
+
+manage_resolv_conf: false
+resolv_conf:
+  nameservers:
+    - 8.8.8.8
+
+hostname: vm-02
+fqdn: vm-02.costam.pl
+
+#na potrzeby debugowania sieci/problemow z kluczami mozna odkomentowac
+#ssh_pwauth: True
+#chpasswd:
+#  expire: True
